@@ -1,21 +1,11 @@
-// --------------------------------------------------------
+// ------------------------------------------------------------------
 // Fast R-CNN
-// Copyright (c) Microsoft. All rights reserved.
-// Written by Ross Girshick, 2015.
-// Licensed under the BSD 2-clause "Simplified" license.
-// See LICENSE in the Fast R-CNN project root for license
-// information.
-// --------------------------------------------------------
+// Copyright (c) 2015 Microsoft
+// Licensed under The MIT License [see fast-rcnn/LICENSE for details]
+// Written by Ross Girshick
+// ------------------------------------------------------------------
 
-#include <string>
-#include <utility>
-#include <vector>
-
-#include "caffe/blob.hpp"
-#include "caffe/common.hpp"
-#include "caffe/layer.hpp"
-#include "caffe/loss_layers.hpp"
-#include "caffe/proto/caffe.pb.h"
+#include "caffe/layers/smooth_L1_loss_layer.hpp"
 
 namespace caffe {
 

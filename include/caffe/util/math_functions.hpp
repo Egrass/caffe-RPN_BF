@@ -4,31 +4,6 @@
 #include <stdint.h>
 #include <cmath>  // for std::fabs and std::signbit
 
-#ifdef _MSC_VER
-#if _MSC_VER < 1800
-namespace std {
-	inline bool signbit(float num);
-	inline bool signbit(double num);
-} // namespace std
-
-template <typename T>
-inline bool isnan(T val)
-{
-	return val != val;
-}
-template <typename T>
-inline bool isinf(T val)
-{
-	return !isnan(val) && (isnan(val *0 ));
-}
-
-#endif // _MSC_VER < 1800
-#include <intrin.h>
-#define __builtin_popcount __popcnt16
-#define __builtin_popcountl __popcnt64
-
-#endif
-
 #include "glog/logging.h"
 
 #include "caffe/common.hpp"
@@ -125,9 +100,6 @@ Dtype caffe_cpu_dot(const int n, const Dtype* x, const Dtype* y);
 template <typename Dtype>
 Dtype caffe_cpu_strided_dot(const int n, const Dtype* x, const int incx,
     const Dtype* y, const int incy);
-
-template <typename Dtype>
-int caffe_cpu_hamming_distance(const int n, const Dtype* x, const Dtype* y);
 
 // Returns the sum of the absolute values of the elements of vector x
 template <typename Dtype>
@@ -258,10 +230,6 @@ void caffe_gpu_rng_bernoulli(const int n, const Dtype p, int* r);
 
 template <typename Dtype>
 void caffe_gpu_dot(const int n, const Dtype* x, const Dtype* y, Dtype* out);
-
-template <typename Dtype>
-uint32_t caffe_gpu_hamming_distance(const int n, const Dtype* x,
-                                    const Dtype* y);
 
 template <typename Dtype>
 void caffe_gpu_asum(const int n, const Dtype* x, Dtype* y);
